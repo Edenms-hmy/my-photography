@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Photography Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 隐藏滚动条但保持功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-gray-200">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-semibold tracking-widest uppercase">Visuals.</a>
+            <div class="hidden md:flex space-x-12 text-sm font-medium tracking-wide uppercase">
+                <a href="#gallery" class="hover:text-gray-400 transition-colors">作品</a>
+                <a href="#about" class="hover:text-gray-400 transition-colors">关于</a>
+                <a href="#contact" class="hover:text-gray-400 transition-colors">联系</a>
+            </div>
+            <button class="md:hidden text-2xl" id="menuBtn">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 px-6 max-w-7xl mx-auto text-center fade-in">
+        <h1 class="text-4xl md:text-6xl font-light leading-tight mb-6">
+            捕捉光影间的<span class="font-normal italic">永恒时刻</span>
+        </h1>
+        <p class="text-gray-500 max-w-xl mx-auto text-lg leading-relaxed">
+            一个专注于自然风光与极简主义人像的独立摄影师，致力于用快门记录世界纯粹的一面。
+        </p>
+    </header>
+
+    <section id="gallery" class="px-6 pb-12 max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-6 mb-12 text-sm uppercase tracking-widest font-medium text-gray-400">
+            <button onclick="filterImages('all')" class="filter-btn text-black border-b-2 border-black pb-1">全部</button>
+            <button onclick="filterImages('landscape')" class="filter-btn hover:text-black transition-colors">风光</button>
+            <button onclick="filterImages('portrait')" class="filter-btn hover:text-black transition-colors">餐饮</button>
+            <button onclick="filterImages('street')" class="filter-btn hover:text-black transition-colors">街拍</button>
+        </div>
+
+        <div id="imageGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 图片项 1 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+                <img src="p00036.jpg" 
+                     alt="我的风光作品" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                     onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00020.JPG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00015.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 图片项 2 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00005.png" 
+                     alt="餐饮摄影" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                     onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+            </div>
+            <!-- 图片项 3 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00034.PNG" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00025.jpg" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00021.PNG" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 图片项 4 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+                <img src="p00017.PNG" 
+                     alt="Landscape" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00013.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00012.JPG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 图片项 5 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00009.jpg" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的餐饮照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00004.png" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的餐饮照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00010.png" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的餐饮照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00002.png" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00022.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00035.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00027.JPG" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00016.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的风光照片 -->
+<div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="landscape">
+    <img src="p00014.PNG" 
+         alt="照片描述" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+         onerror="this.src='https://placehold.co/800x1000?text=图片加载失败'">
+    <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+    </div>
+</div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00023.jpg" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的餐饮照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00008.png" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的餐饮照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="portrait">
+                <img src="p00006.png" 
+                     alt="Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00024.jpg" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 新增加的街拍照片 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00018.jpg" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+            <!-- 图片项 6 -->
+            <div class="gallery-item group relative overflow-hidden bg-gray-100 rounded-lg aspect-[4/5] cursor-pointer fade-in" data-category="street">
+                <img src="p00019.jpg" 
+                     alt="Street" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="overlay absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="text-white border border-white/50 px-6 py-2 rounded-full backdrop-blur-sm">查看详情</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-gray-50 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2">
+                <img src="p00029.jpg" alt="Photographer" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-light mb-8 uppercase tracking-widest">关于我</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    你好，我是 Edenms。我从事专业摄影已有三年时间。我的风格深受自然主义和包豪斯设计理念的影响，追求画面的平衡与纯粹感。
+                </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    对我而言，相机不仅是记录工具，它是连接现实与想象的桥梁。每一张照片背后都有一个未被诉说的故事。
+                </p>
+                <div class="flex gap-6 text-xl">
+                    <a href="#" class="hover:text-gray-400"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gray-400"><i class="fa-brands fa-behance"></i></a>
+                    <a href="#" class="hover:text-gray-400"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-20 px-6 text-center border-t border-gray-100">
+        <h3 class="text-2xl font-light mb-4 tracking-widest uppercase">合作洽谈</h3>
+        <p class="text-gray-400 mb-10">edenms3284@gmail.com</p>
+        <p class="text-xs text-gray-300 uppercase tracking-widest">© 2024 Visuals. Photography Portfolio. All rights reserved.</p>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 hidden transition-all duration-300">
+        <button id="closeLightbox" class="absolute top-8 right-8 text-white text-3xl hover:rotate-90 transition-transform">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Full Screen" class="max-w-full max-h-full object-contain shadow-2xl">
+    </div>
+
+    <script>
+        // 筛选功能
+        function filterImages(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            // 更新按钮状态
+            btns.forEach(btn => {
+                btn.classList.remove('text-black', 'border-b-2', 'border-black', 'pb-1');
+                btn.classList.add('hover:text-black');
+                if(btn.innerText.toLowerCase() === (category === 'all' ? '全部' : category === 'landscape' ? '风光' : category === 'portrait' ? '人像' : '街拍')) {
+                    btn.classList.add('text-black', 'border-b-2', 'border-black', 'pb-1');
+                }
+            });
+
+            // 过滤图片
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => item.style.opacity = '1', 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // 灯箱功能
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // 禁止滚动
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // 点击背景关闭灯箱
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ESC 键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
